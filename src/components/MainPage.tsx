@@ -1,34 +1,38 @@
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Post } from "../types";
 import ActionList from "./ActionList";
 import PostList from "./PostList";
 
 export default function MainPage() {
-    // const [postList, setPostList] = useState<Post[]>([]);
+    const [posts, setPosts] = useState<Post[]>([]);
+    console.log(posts);
     // const [actionList, setActionList] = useState<Action[]>([]);
-    const [error, setError] = useState("");
+    const [error, setError] = useState<string>("");
 
-    // fetch all the movies and send the right query parameter in page and search
-    async function getMovies() {
-        // const url = `http://www.omdbapi.com/?s=${searchText}&apikey=41dde112&page=${currentPage}`;
-        // const response = await fetch(url);
-        // if (response.status === 200) {
-        //     const data = (await response.json()) as FullApiResponse;
-        //     if (data.Response === ResponseStatus.True) {
-        //         setPostList(data.Search);
-        //     } else {
-        //         setError(data.Error);
-        //     }
-        // } else {
-        //     setError("network error");
-        // }
+    async function getPosts() {
+        const url = `https://jsonplaceholder.typicode.com/posts`;
+        const response = await fetch(url);
+        if (response.status === 200) {
+            const data = (await response.json()) as Post[];
+            const firstFivePosts = data.slice(0, 5);
+            setPosts(firstFivePosts);
+        } else {
+            setError(response.statusText);
+        }
     }
 
-    //   useEffect for fetching?
+    useEffect(() => {
+        getPosts();
+    }, []);
 
     return (
-        <div className="flex flex-row">
-            <PostList />
-            <ActionList />
+        <div className="flex w-full">
+            <div className="flex-1 m-8">
+                <PostList posts={posts} />
+            </div>
+            <div className="flex-1 m-8">
+                <ActionList />
+            </div>
         </div>
     );
 }
