@@ -1,17 +1,24 @@
 export type Post = {
-    index: number;
     userId: number;
     id: number;
     title: string;
     body: string;
 };
-
 export interface PostListProps {
     posts: Post[];
-    handleClickUp: (posts: Post[], postIndex: number) => void;
-    handleClickDown: (posts: Post[], postIndex: number) => void;
+    handleClickUp: (postIndex: number) => void;
+    handleClickDown: (postIndex: number) => void;
+}
+export interface PostCardProps extends PostListProps {
+    post: Post;
 }
 
-export interface PostProps extends PostListProps {
-    post: Post;
+export type Action = {
+    text: string;
+};
+export interface ActionListProps {
+    actions: Action[];
+}
+export interface ActionItemProps {
+    action: Action;
 }

@@ -1,12 +1,12 @@
 import React from "react";
-import { PostProps } from "../types";
+import { PostCardProps } from "../types";
 
 export default function PostCard({
     posts,
     post,
     handleClickDown,
     handleClickUp,
-}: PostProps) {
+}: PostCardProps) {
     const postIndex = posts.indexOf(post);
 
     const showUp = postIndex !== 0;
@@ -17,7 +17,7 @@ export default function PostCard({
             <h1>{`Post ${post.id}`}</h1>
             {showUp && (
                 <button
-                    onClick={() => handleClickUp(posts, postIndex)}
+                    onClick={() => handleClickUp(postIndex)}
                     className={
                         "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-8"
                     }
@@ -27,7 +27,7 @@ export default function PostCard({
             )}{" "}
             {showDown && (
                 <button
-                    onClick={() => handleClickDown(posts, postIndex)}
+                    onClick={() => handleClickDown(postIndex)}
                     className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                 >
                     {"down"}

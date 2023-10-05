@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Post } from "../types";
+import { Action, Post } from "../types";
 import ActionList from "./ActionList";
 import PostList from "./PostList";
 
 export default function MainPage() {
     const [posts, setPosts] = useState<Post[]>([]);
-    // const [actionList, setActionList] = useState<Action[]>([]);
+    const [actions, setActions] = useState<Action[]>([]);
     const [error, setError] = useState<string>("");
 
     async function getPosts() {
@@ -24,20 +24,44 @@ export default function MainPage() {
         getPosts();
     }, []);
 
-    const handleClickUp = (posts, postIndex: number) => {
-        let updatedPosts = [...posts];
-        let temp = updatedPosts[postIndex];
+    function createActionUp(postIndex: number) {
+        const post = posts.find((post) => posts.indexOf(post) === postIndex);
+        const updatedActions = [...actions];
+        updatedActions.unshift({
+            text: `Moved post ${post?.id} from index ${postIndex} to ${
+                postIndex - 1
+            }`,
+        });
+        setActions(updatedActions);
+    }
+
+    function createActionDown(postIndex: number) {
+        const post = posts.find((post) => posts.indexOf(post) === postIndex);
+        const updatedActions = [...actions];
+        updatedActions.unshift({
+            text: `Moved post ${post?.id} from index ${postIndex} to ${
+                postIndex + 1
+            }`,
+        });
+        setActions(updatedActions);
+    }
+
+    const handleClickUp = (postIndex: number) => {
+        const updatedPosts = [...posts];
+        const temp = updatedPosts[postIndex];
         updatedPosts[postIndex] = updatedPosts[postIndex - 1];
         updatedPosts[postIndex - 1] = temp;
         setPosts(updatedPosts);
+        createActionUp(postIndex);
     };
 
-    const handleClickDown = (posts, postIndex: number) => {
-        let updatedPosts = [...posts];
-        let temp = updatedPosts[postIndex];
+    const handleClickDown = (postIndex: number) => {
+        const updatedPosts = [...posts];
+        const temp = updatedPosts[postIndex];
         updatedPosts[postIndex] = updatedPosts[postIndex + 1];
         updatedPosts[postIndex + 1] = temp;
         setPosts(updatedPosts);
+        createActionDown(postIndex);
     };
 
     return (
@@ -50,7 +74,7 @@ export default function MainPage() {
                 />
             </div>
             <div className="flex-1 m-8">
-                <ActionList />
+                <ActionList actions={actions} />
             </div>
         </div>
     );
