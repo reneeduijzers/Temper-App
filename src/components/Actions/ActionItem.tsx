@@ -1,5 +1,5 @@
 import React from "react";
-import { ActionItemProps } from "../types";
+import { ActionItemProps } from "../../types";
 
 export default function ActionItem({
     action,

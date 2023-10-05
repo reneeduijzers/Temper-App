@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Action, Post } from "../types";
-import ActionList from "./ActionList";
-import PostList from "./PostList";
+import ActionList from "./Actions/ActionList";
+import PostList from "./Posts/PostList";
 
 export default function MainPage() {
     const [posts, setPosts] = useState<Post[]>([]);

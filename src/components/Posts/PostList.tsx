@@ -1,5 +1,5 @@
 import React from "react";
-import { Post, PostListProps } from "../types";
+import { Post, PostListProps } from "../../types";
 import PostCard from "./PostCard";
 
 export default function PostList({ posts, handleClick }: PostListProps) {

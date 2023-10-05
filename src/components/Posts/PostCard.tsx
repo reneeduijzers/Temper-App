@@ -1,5 +1,5 @@
 import React from "react";
-import { PostCardProps } from "../types";
+import { PostCardProps } from "../../types";
 
 export default function PostCard({
     post,
