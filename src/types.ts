@@ -6,17 +6,16 @@ export type Post = {
 };
 export interface PostListProps {
     posts: Post[];
-    handleClickUp: (postIndex: number) => void;
-    handleClickDown: (postIndex: number) => void;
+    handleClick: (postIndex: number, direction: string) => void;
 }
 export interface PostCardProps {
     post: Post;
     postIndex: number;
-    handleClickUp: (postIndex: number) => void;
-    handleClickDown: (postIndex: number) => void;
+    handleClick: (postIndex: number, direction: string) => void;
 }
 
 export type Action = {
+    id: string;
     text: string;
 };
 export interface ActionListProps {

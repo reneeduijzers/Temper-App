@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 import { Action, Post } from "../types";
 import ActionList from "./ActionList";
 import PostList from "./PostList";
@@ -25,46 +26,25 @@ export default function MainPage() {
         getPosts();
     }, []);
 
-    function createActionUp(postIndex: number) {
+    function createAction(postIndex: number, newPostIndex: number) {
         const post = posts.find((post) => posts.indexOf(post) === postIndex);
         const updatedActions = [...actions];
         updatedActions.unshift({
-            text: `Moved post ${post?.id} from index ${postIndex} to ${
-                postIndex - 1
-            }`,
+            id: uuidv4(),
+            text: `Moved post ${post?.id} from index ${postIndex} to ${newPostIndex}`,
         });
         setActions(updatedActions);
     }
 
-    function createActionDown(postIndex: number) {
-        const post = posts.find((post) => posts.indexOf(post) === postIndex);
-        const updatedActions = [...actions];
-        updatedActions.unshift({
-            text: `Moved post ${post?.id} from index ${postIndex} to ${
-                postIndex + 1
-            }`,
-        });
-        setActions(updatedActions);
-    }
-
-    const handleClickUp = (postIndex: number) => {
+    const handleClick = (postIndex: number, direction: string) => {
         setPostsHistory([...postsHistory, posts]);
         const updatedPosts = [...posts];
         const temp = updatedPosts[postIndex];
-        updatedPosts[postIndex] = updatedPosts[postIndex - 1];
-        updatedPosts[postIndex - 1] = temp;
+        const newPostIndex = direction === "up" ? postIndex - 1 : postIndex + 1;
+        updatedPosts[postIndex] = updatedPosts[newPostIndex];
+        updatedPosts[newPostIndex] = temp;
         setPosts(updatedPosts);
-        createActionUp(postIndex);
-    };
-
-    const handleClickDown = (postIndex: number) => {
-        setPostsHistory([...postsHistory, posts]);
-        const updatedPosts = [...posts];
-        const temp = updatedPosts[postIndex];
-        updatedPosts[postIndex] = updatedPosts[postIndex + 1];
-        updatedPosts[postIndex + 1] = temp;
-        setPosts(updatedPosts);
-        createActionDown(postIndex);
+        createAction(postIndex, newPostIndex);
     };
 
     const handleTimeTravel = (actionIndex: number) => {
@@ -77,11 +57,7 @@ export default function MainPage() {
     return (
         <div className="flex w-full">
             <div className="flex-1 m-8">
-                <PostList
-                    handleClickUp={handleClickUp}
-                    handleClickDown={handleClickDown}
-                    posts={posts}
-                />
+                <PostList handleClick={handleClick} posts={posts} />
             </div>
             <div className="flex-1 m-8">
                 <ActionList

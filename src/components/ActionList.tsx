@@ -13,7 +13,7 @@ export default function ActionList({
                 actions.map((action: Action, index: number) => {
                     return (
                         <ActionItem
-                            key={action.text}
+                            key={action.id}
                             handleTimeTravel={handleTimeTravel}
                             action={action}
                             actionIndex={index}
