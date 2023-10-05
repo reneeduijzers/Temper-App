@@ -10,14 +10,14 @@ export default function PostList({
     return (
         <div className={"space-y-4"}>
             <h1>Sortable Post List</h1>
-            {posts.map((post: Post) => {
+            {posts.map((post: Post, index: number) => {
                 return (
                     <PostCard
                         handleClickUp={handleClickUp}
                         handleClickDown={handleClickDown}
                         key={post.id}
                         post={post}
-                        posts={posts}
+                        postIndex={index}
                     ></PostCard>
                 );
             })}

@@ -2,13 +2,11 @@ import React from "react";
 import { PostCardProps } from "../types";
 
 export default function PostCard({
-    posts,
     post,
+    postIndex,
     handleClickDown,
     handleClickUp,
 }: PostCardProps) {
-    const postIndex = posts.indexOf(post);
-
     const showUp = postIndex !== 0;
     const showDown = postIndex !== 4;
 

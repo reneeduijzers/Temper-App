@@ -9,8 +9,11 @@ export interface PostListProps {
     handleClickUp: (postIndex: number) => void;
     handleClickDown: (postIndex: number) => void;
 }
-export interface PostCardProps extends PostListProps {
+export interface PostCardProps {
     post: Post;
+    postIndex: number;
+    handleClickUp: (postIndex: number) => void;
+    handleClickDown: (postIndex: number) => void;
 }
 
 export type Action = {
@@ -20,6 +23,8 @@ export interface ActionListProps {
     actions: Action[];
     handleTimeTravel: (actionIndex: number) => void;
 }
-export interface ActionItemProps extends ActionListProps {
+export interface ActionItemProps {
     action: Action;
+    actionIndex: number;
+    handleTimeTravel: (actionIndex: number) => void;
 }

@@ -68,9 +68,9 @@ export default function MainPage() {
     };
 
     const handleTimeTravel = (actionIndex: number) => {
-        const selectedHistory = postsHistory[actionIndex];
-        setPosts(selectedHistory);
-        setPostsHistory(postsHistory.slice(0, actionIndex + 1));
+        const selectedPostHistory = postsHistory[actionIndex];
+        setPosts(selectedPostHistory);
+        setPostsHistory(postsHistory.slice(actionIndex + 1));
         setActions(actions.slice(actionIndex + 1));
     };
 

@@ -10,13 +10,13 @@ export default function ActionList({
         <div>
             <h1>List of actions Committed</h1>
             {actions &&
-                actions.map((action: Action) => {
+                actions.map((action: Action, index: number) => {
                     return (
                         <ActionItem
                             key={action.text}
                             handleTimeTravel={handleTimeTravel}
                             action={action}
-                            actions={actions}
+                            actionIndex={index}
                         ></ActionItem>
                     );
                 })}

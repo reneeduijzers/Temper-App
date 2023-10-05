@@ -3,11 +3,9 @@ import { ActionItemProps } from "../types";
 
 export default function ActionItem({
     action,
-    actions,
+    actionIndex,
     handleTimeTravel,
 }: ActionItemProps) {
-    const actionIndex = actions.indexOf(action);
-
     return (
         <div className="h-20 border-2">
             <h1>{action.text}</h1>
