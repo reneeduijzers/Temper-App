@@ -6,6 +6,7 @@ import PostList from "./PostList";
 export default function MainPage() {
     const [posts, setPosts] = useState<Post[]>([]);
     const [actions, setActions] = useState<Action[]>([]);
+    const [postsHistory, setPostsHistory] = useState<Post[][]>([]);
     const [error, setError] = useState<string>("");
 
     async function getPosts() {
@@ -47,6 +48,7 @@ export default function MainPage() {
     }
 
     const handleClickUp = (postIndex: number) => {
+        setPostsHistory([...postsHistory, posts]);
         const updatedPosts = [...posts];
         const temp = updatedPosts[postIndex];
         updatedPosts[postIndex] = updatedPosts[postIndex - 1];
@@ -56,12 +58,20 @@ export default function MainPage() {
     };
 
     const handleClickDown = (postIndex: number) => {
+        setPostsHistory([...postsHistory, posts]);
         const updatedPosts = [...posts];
         const temp = updatedPosts[postIndex];
         updatedPosts[postIndex] = updatedPosts[postIndex + 1];
         updatedPosts[postIndex + 1] = temp;
         setPosts(updatedPosts);
         createActionDown(postIndex);
+    };
+
+    const handleTimeTravel = (actionIndex: number) => {
+        const selectedHistory = postsHistory[actionIndex];
+        setPosts(selectedHistory);
+        setPostsHistory(postsHistory.slice(0, actionIndex + 1));
+        setActions(actions.slice(actionIndex + 1));
     };
 
     return (
@@ -74,7 +84,10 @@ export default function MainPage() {
                 />
             </div>
             <div className="flex-1 m-8">
-                <ActionList actions={actions} />
+                <ActionList
+                    handleTimeTravel={handleTimeTravel}
+                    actions={actions}
+                />
             </div>
         </div>
     );

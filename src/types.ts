@@ -18,7 +18,8 @@ export type Action = {
 };
 export interface ActionListProps {
     actions: Action[];
+    handleTimeTravel: (actionIndex: number) => void;
 }
-export interface ActionItemProps {
+export interface ActionItemProps extends ActionListProps {
     action: Action;
 }
