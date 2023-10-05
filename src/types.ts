@@ -4,7 +4,7 @@ export type Post = {
     title: string;
     body: string;
 };
-export interface PostListProps {
+export interface PostListsProps {
     posts: Post[];
     handleClick: (postIndex: number, direction: string) => void;
 }
@@ -18,7 +18,7 @@ export type Action = {
     id: string;
     text: string;
 };
-export interface ActionListProps {
+export interface ActionsListProps {
     actions: Action[];
     handleTimeTravel: (actionIndex: number) => void;
 }

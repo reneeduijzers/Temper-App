@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Action, Post } from "../types";
-import ActionList from "./Actions/ActionList";
-import PostList from "./Posts/PostList";
+import ActionsList from "./Actions/ActionsList";
+import PostList from "./Posts/PostsList";
 
-export default function MainPage() {
+export default function OverviewPage() {
     const [posts, setPosts] = useState<Post[]>([]);
     const [actions, setActions] = useState<Action[]>([]);
     const [postsHistory, setPostsHistory] = useState<Post[][]>([]);
@@ -60,7 +60,7 @@ export default function MainPage() {
                 <PostList handleClick={handleClick} posts={posts} />
             </div>
             <div className="flex-1 m-8">
-                <ActionList
+                <ActionsList
                     handleTimeTravel={handleTimeTravel}
                     actions={actions}
                 />

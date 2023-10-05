@@ -1,11 +1,11 @@
 import React from "react";
-import { Action, ActionListProps } from "../../types";
+import { Action, ActionsListProps } from "../../types";
 import ActionItem from "./ActionItem";
 
-export default function ActionList({
+export default function ActionsList({
     actions,
     handleTimeTravel,
-}: ActionListProps) {
+}: ActionsListProps) {
     return (
         <div>
             <h1>List of actions Committed</h1>
