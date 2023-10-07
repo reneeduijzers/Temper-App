@@ -1,8 +1,8 @@
 import React from "react";
-import { Post, PostListsProps } from "../../types";
+import { Post, PostsListProps } from "../../types";
 import PostCard from "./PostCard";
 
-export default function PostsList({ posts, handleClick }: PostListsProps) {
+export default function PostsList({ posts, handleClick }: PostsListProps) {
     return (
         <div className={"space-y-4"}>
             <h1>Sortable Post List</h1>

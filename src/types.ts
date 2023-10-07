@@ -4,7 +4,7 @@ export type Post = {
     title: string;
     body: string;
 };
-export interface PostListsProps {
+export interface PostsListProps {
     posts: Post[];
     handleClick: (postIndex: number, direction: string) => void;
 }

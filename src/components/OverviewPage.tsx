@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Action, Post } from "../types";
-import ActionsList from "./Actions/ActionsList";
-import PostList from "./Posts/PostsList";
+import ActionsList from "./actions/ActionsList";
+import PostList from "./posts/PostsList";
 
 export default function OverviewPage() {
     const [posts, setPosts] = useState<Post[]>([]);
     const [actions, setActions] = useState<Action[]>([]);
+    console.log("actions", actions);
     const [postsHistory, setPostsHistory] = useState<Post[][]>([]);
+    console.log("history", postsHistory);
     const [error, setError] = useState<string>("");
 
     async function getPosts() {
