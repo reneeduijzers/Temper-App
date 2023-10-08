@@ -39,7 +39,7 @@ export default function OverviewPage() {
     }
 
     const handleClick = (postIndex: number, direction: string) => {
-        setPostsHistory([...postsHistory, posts]);
+        setPostsHistory([posts, ...postsHistory]);
         const updatedPosts = [...posts];
         const temp = updatedPosts[postIndex];
         const newPostIndex = direction === "up" ? postIndex - 1 : postIndex + 1;
@@ -57,7 +57,7 @@ export default function OverviewPage() {
     };
 
     return (
-        <div className="flex w-full">
+        <div className="triangle-down flex w-full">
             <div className="flex-1 m-8">
                 <PostList handleClick={handleClick} posts={posts} />
             </div>

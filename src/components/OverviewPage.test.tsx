@@ -111,7 +111,7 @@ test("Timetravel button is working correctly: reverses its corresponding action 
         "Moved post 1 from index 1 to 2"
     );
 
-    fireEvent.click(screen.getByTestId("button-timetravel-0"));
+    fireEvent.click(screen.getByTestId("button-timetravel-1"));
 
     const postsContainer = screen.getByTestId("post-container");
     const allPosts = within(postsContainer).getAllByTestId(/post-\d+/);
