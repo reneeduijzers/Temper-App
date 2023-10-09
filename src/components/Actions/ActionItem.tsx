@@ -7,15 +7,15 @@ export default function ActionItem({
     handleTimeTravel,
 }: ActionItemProps) {
     return (
-        <div className="h-20 border-2">
+        <div className="relative bg-white h-16 border border-b-0 last:border flex items-center p-3 text-neutral-500">
             <h1>{action.text}</h1>
             <button
                 onClick={() => handleTimeTravel(actionIndex)}
                 className={
-                    "bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-8"
+                    "absolute right-0 bg-temper-green hover:bg-transparent hover:text-temper-green hover:border hover:border-temper-green hover:scale-110 text-neutral-900 font-semibold py-2 px-4 rounded m-3"
                 }
             >
-                {"timetravel"}
+                {"Time travel"}
             </button>
         </div>
     );

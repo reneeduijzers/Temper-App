@@ -7,9 +7,7 @@ import PostList from "./posts/PostsList";
 export default function OverviewPage() {
     const [posts, setPosts] = useState<Post[]>([]);
     const [actions, setActions] = useState<Action[]>([]);
-    console.log("actions", actions);
     const [postsHistory, setPostsHistory] = useState<Post[][]>([]);
-    console.log("history", postsHistory);
     const [error, setError] = useState<string>("");
 
     async function getPosts() {
@@ -57,15 +55,22 @@ export default function OverviewPage() {
     };
 
     return (
-        <div className="triangle-down flex w-full">
-            <div className="flex-1 m-8">
-                <PostList handleClick={handleClick} posts={posts} />
-            </div>
-            <div className="flex-1 m-8">
-                <ActionsList
-                    handleTimeTravel={handleTimeTravel}
-                    actions={actions}
-                />
+        <div className="relative">
+            <div className="w-screen h-screen bg-neutral-100 absolute top-0 left-0 z-negative2"></div>
+            <div
+                className="w-screen h-0 absolute top-0 left-0 z-negative1 border-t-[250px] border-t-temper-purple
+                border-r-vw border-r-transparent"
+            ></div>
+            <div className="flex w-full h-full">
+                <div className="flex-1 m-16">
+                    <PostList handleClick={handleClick} posts={posts} />
+                </div>
+                <div className="flex-1 m-16">
+                    <ActionsList
+                        handleTimeTravel={handleTimeTravel}
+                        actions={actions}
+                    />
+                </div>
             </div>
         </div>
     );

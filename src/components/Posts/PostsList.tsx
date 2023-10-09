@@ -4,8 +4,8 @@ import PostCard from "./PostCard";
 
 export default function PostsList({ posts, handleClick }: PostsListProps) {
     return (
-        <div className={"space-y-4"}>
-            <h1>Sortable Post List</h1>
+        <div className="space-y-4">
+            <h1 className="text-xl text-white">Sortable Post List</h1>
             {posts.map((post: Post, index: number) => {
                 return (
                     <PostCard
