@@ -4,7 +4,7 @@ import React from "react";
 import { server } from "../mocks/server";
 import OverviewPage from "./OverviewPage";
 
-jest.mock("./posts/PostsList", () => (props) => (
+jest.mock("./Posts/PostsList", () => (props) => (
     <div data-testid={"post-container"}>
         {props.posts.map((post, index) => (
             <div key={post.id}>
@@ -27,7 +27,7 @@ jest.mock("./posts/PostsList", () => (props) => (
     </div>
 ));
 
-jest.mock("./actions/ActionsList", () => (props) => (
+jest.mock("./Actions/ActionsList", () => (props) => (
     <div>
         {props.actions.map((action, index) => (
             <div key={action.id}>
