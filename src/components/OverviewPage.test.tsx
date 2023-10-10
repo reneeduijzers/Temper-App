@@ -49,7 +49,7 @@ beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
-test("Up button should move post up in the list and create corresponding action", async () => {
+test("Up button should move post up in the list and creates corresponding action", async () => {
     render(<OverviewPage />);
 
     const post2 = await screen.findByTestId("post-2");
@@ -71,7 +71,7 @@ test("Up button should move post up in the list and create corresponding action"
     expect(indexPost2).toBe(0);
 });
 
-test("Down button should move post down in the list and create corresponding action", async () => {
+test("Down button should move post down in the list and creates corresponding action", async () => {
     render(<OverviewPage />);
 
     const post2 = await screen.findByTestId("post-2");
