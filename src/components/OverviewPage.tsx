@@ -8,6 +8,7 @@ export default function OverviewPage() {
     const [posts, setPosts] = useState<Post[]>([]);
     const [actions, setActions] = useState<Action[]>([]);
     const [postsHistory, setPostsHistory] = useState<Post[][]>([]);
+    // could use this for errortoast or another way to give more information to the user
     const [error, setError] = useState<string>("");
 
     async function getPosts() {

@@ -93,7 +93,7 @@ test("Down button should move post down in the list and create corresponding act
     expect(indexPost2).toBe(2);
 });
 
-test("Timetravel button is working correctly: reverses its corresponding action and actions on top", async () => {
+test("Time travel button is working correctly: it reverses its corresponding action and actions on top", async () => {
     render(<OverviewPage />);
 
     const post2 = await screen.findByTestId("post-2");
