@@ -1,29 +1,43 @@
 export type Post = {
-    userId: number;
-    id: number;
-    title: string;
-    body: string;
+  userId: number;
+  id: number;
+  title: string;
+  body: string;
 };
 export interface PostsListProps {
-    posts: Post[];
-    handleClick: (postIndex: number, direction: string) => void;
+  posts: Post[];
+  handleClick: (postIndex: number, direction: string) => void;
 }
 export interface PostCardProps {
-    post: Post;
-    postIndex: number;
-    handleClick: (postIndex: number, direction: string) => void;
+  post: Post;
+  postIndex: number;
+  handleClick: (postIndex: number, direction: string) => void;
 }
 
 export type Action = {
-    id: string;
-    text: string;
+  id: string;
+  text: string;
 };
 export interface ActionsListProps {
-    actions: Action[];
-    handleTimeTravel: (actionIndex: number) => void;
+  actions: Action[];
+  handleTimeTravel: (actionIndex: number) => void;
 }
 export interface ActionItemProps {
-    action: Action;
-    actionIndex: number;
-    handleTimeTravel: (actionIndex: number) => void;
+  action: Action;
+  actionIndex: number;
+  handleTimeTravel: (actionIndex: number) => void;
+}
+
+export interface ButtonProps {
+  postIndex: number;
+  handleClick: (postIndex: number, direction: string) => void;
+}
+
+export interface TimeTravelButtonProps {
+  actionIndex: number;
+  handleTimeTravel: (actionIndex: number) => void;
+}
+
+export interface ArrowIconProps {
+  className?: string;
 }
