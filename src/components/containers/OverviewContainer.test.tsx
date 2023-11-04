@@ -1,10 +1,10 @@
 import "@testing-library/jest-dom/extend-expect";
 import { fireEvent, render, screen, within } from "@testing-library/react";
 import React from "react";
-import { server } from "../mocks/server";
+import { server } from "../../mocks/server";
 import OverviewContainer from "./OverviewContainer";
 
-jest.mock("./Posts/PostsList", () => (props) => (
+jest.mock("../posts/PostsList", () => (props) => (
   <div data-testid={"post-container"}>
     {props.posts.map((post, index) => (
       <div key={post.id}>
@@ -27,7 +27,7 @@ jest.mock("./Posts/PostsList", () => (props) => (
   </div>
 ));
 
-jest.mock("./Actions/ActionsList", () => (props) => (
+jest.mock("../Actions/ActionsList", () => (props) => (
   <div>
     {props.actions.map((action, index) => (
       <div key={action.id}>

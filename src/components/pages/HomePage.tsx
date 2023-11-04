@@ -1,5 +1,5 @@
 import React from "react";
-import OverviewContainer from "./OverviewContainer";
+import OverviewContainer from "../containers/OverviewContainer";
 
 export default function HomePage() {
   return (
